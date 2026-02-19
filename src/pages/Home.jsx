@@ -1,8 +1,10 @@
+import Hero from "../components/Hero";
+
 /**
  * Page Home
  */
 function Home() {
-  return <h1 className="text-5xl font-medium">Home</h1>;
+  return <Hero />;
 }
 
 export default Home;

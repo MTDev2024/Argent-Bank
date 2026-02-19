@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+.hero-bg {
+  background-position: 0 -50px;
+}
+
+@media (min-width: 920px) {
+  .hero-bg {
+    background-position: 0% 33%;
+  }
+}
