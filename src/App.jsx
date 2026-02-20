@@ -6,7 +6,13 @@ import SignIn from "./pages/SignIn";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
+//  import { loginUser } from "./services/api";
+
 function App() {
+  // loginUser({ email: "tony@stark.com", password: "password123" }).then(
+  //   (token) => console.log("Token reçu :", token),
+  // );
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
