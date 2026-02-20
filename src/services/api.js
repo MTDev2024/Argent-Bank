@@ -10,6 +10,9 @@ export async function loginUser({ email, password }) {
   });
 
   if (!response.ok) {
+    if (response.status === 401) {
+      throw new Error("Email ou mot de passe incorrect");
+    }
     throw new Error(`Erreur ${response.status}`);
   }
 
@@ -27,6 +30,9 @@ export async function getUserProfile(access_token) {
     },
   });
   if (!response.ok) {
+    if (response.status === 401) {
+      throw new Error("Session expirée, veuillez vous reconnecter");
+    }
     throw new Error(`Erreur ${response.status}`);
   }
   const data = await response.json();
@@ -45,6 +51,9 @@ export async function updateUserProfile(firstName, lastName, access_token) {
     body: JSON.stringify({ firstName, lastName }),
   });
   if (!response.ok) {
+    if (response.status === 401) {
+      throw new Error("Session expirée, veuillez vous reconnecter");
+    }
     throw new Error(`Erreur ${response.status}`);
   }
   const data = await response.json();
