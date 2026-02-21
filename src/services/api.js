@@ -10,6 +10,9 @@ export async function loginUser({ email, password }) {
   });
 
   if (!response.ok) {
+    if (response.status === 400) {
+      throw new Error("Email ou mot de passe invalide");
+    }
     if (response.status === 401) {
       throw new Error("Email ou mot de passe incorrect");
     }
