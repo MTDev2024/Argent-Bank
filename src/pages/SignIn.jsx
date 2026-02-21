@@ -2,6 +2,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { loginUser } from "../services/api";
 import { setToken } from "../redux/slices/authSlice.js";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 /**
@@ -12,6 +13,7 @@ function SignIn() {
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [error, setError] = useState(null);
 
@@ -22,7 +24,8 @@ function SignIn() {
       const token = await loginUser({ email: username, password });
       // dispatch du token
       dispatch(setToken(token));
-      // redirection (après)
+      // redirection
+      navigate("/profile");
     } catch (err) {
       setError(err.message);
     }
