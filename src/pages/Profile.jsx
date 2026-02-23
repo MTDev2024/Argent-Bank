@@ -3,7 +3,9 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../redux/slices/userSlice.js";
 
-import { getUserProfile } from "../services/api";
+import { getUserProfile, updateUserProfile } from "../services/api";
+
+import AccountCard from "../components/AccountCard.jsx";
 
 const accounts = [
   {
@@ -27,7 +29,73 @@ const accounts = [
  * Page Profile
  */
 function Profile() {
-  return <h1 className="text-5xl font-medium">Profile</h1>;
+  const token = useSelector((state) => state.auth.token);
+  const user = useSelector((state) => state.user);
+
+  const dispatch = useDispatch();
+  const [isEditing, setIsEditing] = useState(false);
+
+  const [firstName, setFirstName] = useState(user.firstName);
+  const [lastName, setLastName] = useState(user.lastName);
+
+  useEffect(() => {
+    // 1. appeler getUserProfile avec le token
+    getUserProfile(token).then((data) => {
+      // 2. dispatcher les données reçues
+      dispatch(setUser(data));
+    });
+  }, [token, dispatch]);
+
+  const handleSave = async () => {
+    await updateUserProfile(firstName, lastName, token);
+    dispatch(setUser({ firstName, lastName }));
+    setIsEditing(false);
+  };
+
+  return (
+    <main>
+      <div>
+        {isEditing ? (
+          // Mode édition : inputs + Save + Cancel
+          <div>
+            <h1>Welcome back</h1>
+            <input
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              className="border border-gray-300 p-1"
+            />
+            <input
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              className="border border-gray-300 p-1"
+            />
+            <button onClick={handleSave}>Save</button>
+            <button onClick={() => setIsEditing(false)}>Cancel</button>
+          </div>
+        ) : (
+          // Mode normal : nom complet + Edit Name
+          <div>
+            <h1>
+              Welcome back
+              <br />
+              {user.firstName} {user.lastName}!
+            </h1>
+            <button onClick={() => setIsEditing(true)}>Edit Name</button>
+          </div>
+        )}
+      </div>
+
+      {/* Cards de compte */}
+      {accounts.map((account) => (
+        <AccountCard
+          key={account.title}
+          title={account.title}
+          amount={account.amount}
+          description={account.description}
+        />
+      ))}
+    </main>
+  );
 }
 
 export default Profile;
