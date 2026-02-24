@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
-import { FaUserCircle } from "react-icons/fa";
+import { FaUserCircle, FaSignOutAlt } from "react-icons/fa";
+
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../redux/slices/authSlice.js";
@@ -12,6 +13,8 @@ function Header() {
   const navigate = useNavigate();
   const token = useSelector((state) => state.auth.token);
 
+  const firstName = useSelector((state) => state.user.firstName);
+
   function handleLogout() {
     dispatch(logout());
     dispatch(clearUser());
@@ -19,7 +22,7 @@ function Header() {
   }
 
   return (
-    <header>
+    <header className=" border-b-2 border-gray-300">
       <nav className="flex justify-between items-center py-1 px-5">
         <NavLink to="/" className="flex items-center">
           <img src={logo} alt="Logo Argent Bank" className="w-50 max-w-full" />
@@ -27,13 +30,22 @@ function Header() {
         </NavLink>
 
         {token ? (
-          <button
-            onClick={handleLogout}
-            className="flex items-center gap-2 font-bold text-[#2c3e50] hover:underline"
-          >
-            <FaUserCircle />
-            Sign Out
-          </button>
+          <div className="flex items-center gap-4">
+            <NavLink
+              to="/profile"
+              className="flex items-center gap-2 font-bold text-[#2c3e50] hover:underline"
+            >
+              <FaUserCircle />
+              {firstName}
+            </NavLink>
+            <button
+              onClick={handleLogout}
+              className="flex items-center gap-2 font-bold text-[#2c3e50] hover:underline"
+            >
+              <FaSignOutAlt />
+              Sign Out
+            </button>
+          </div>
         ) : (
           <NavLink
             to="/sign-in"

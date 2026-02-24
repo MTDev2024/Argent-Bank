@@ -53,8 +53,8 @@ function Profile() {
   };
 
   return (
-    <main>
-      <div>
+    <div className="bg-[#12002b] min-h-screen">
+      <div className="flex justify-center">
         {isEditing ? (
           // Mode édition : inputs + Save + Cancel
           <div>
@@ -74,27 +74,34 @@ function Profile() {
           </div>
         ) : (
           // Mode normal : nom complet + Edit Name
-          <div>
-            <h1>
+          <div className="text-center py-8">
+            <h1 className="text-white text-3xl">
               Welcome back
               <br />
               {user.firstName} {user.lastName}!
             </h1>
-            <button onClick={() => setIsEditing(true)}>Edit Name</button>
+            <button
+              className="text-white border border-[#00bc77] bg-[#00bc77] font-bold p-2.5 mt-4"
+              onClick={() => setIsEditing(true)}
+            >
+              Edit Name
+            </button>
           </div>
         )}
       </div>
 
       {/* Cards de compte */}
-      {accounts.map((account) => (
-        <AccountCard
-          key={account.title}
-          title={account.title}
-          amount={account.amount}
-          description={account.description}
-        />
-      ))}
-    </main>
+      <div className="mt-8">
+        {accounts.map((account) => (
+          <AccountCard
+            key={account.title}
+            title={account.title}
+            amount={account.amount}
+            description={account.description}
+          />
+        ))}
+      </div>
+    </div>
   );
 }
 
