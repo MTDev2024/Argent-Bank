@@ -67,7 +67,7 @@ function SignIn() {
               Remember me
             </label>
           </div>
-          <button className="w-full font-bold text-xl text-white mt-4 p-2 bg-[#00bc77] border-[#00bc77] underline block">
+          <button className="w-full font-bold text-xl text-white mt-4 p-2 bg-(--color-green) border-(--color-green) underline block">
             Sign In
           </button>
           {error && <p className="text-red-500 mt-2">{error}</p>}

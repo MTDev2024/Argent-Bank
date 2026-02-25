@@ -33,14 +33,14 @@ function Header() {
           <div className="flex items-center gap-4">
             <NavLink
               to="/profile"
-              className="flex items-center gap-2 font-bold text-[#2c3e50] hover:underline"
+              className="flex items-center gap-2 font-bold text-(--color-grey) hover:underline"
             >
               <FaUserCircle />
               {firstName}
             </NavLink>
             <button
               onClick={handleLogout}
-              className="flex items-center gap-2 font-bold text-[#2c3e50] hover:underline"
+              className="flex items-center gap-2 font-bold text-(--color-grey) hover:underline"
             >
               <FaSignOutAlt />
               Sign Out
@@ -49,7 +49,7 @@ function Header() {
         ) : (
           <NavLink
             to="/sign-in"
-            className="flex items-center gap-2 font-bold text-[#2c3e50] no-underline hover:underline"
+            className="flex items-center gap-2 font-bold text-(--color-grey) no-underline hover:underline"
           >
             <FaUserCircle />
             Sign In

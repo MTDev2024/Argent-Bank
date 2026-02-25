@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+:root {
+  --color-green: #00bc77;
+  --color-violet: #6b67e5;
+  --color-dark: #12002b;
+  --color-text: #2c3e50;
+  --color-border-light: #ccc;
+}
+
 .hero-bg {
   background-position: 0 -50px;
 }

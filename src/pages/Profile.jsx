@@ -53,24 +53,46 @@ function Profile() {
   };
 
   return (
-    <div className="bg-[#12002b] min-h-screen">
+    <div
+      className={
+        isEditing
+          ? "bg-gray-200 min-h-screen"
+          : "bg-(--color-dark) min-h-screen"
+      }
+    >
       <div className="flex justify-center">
         {isEditing ? (
-          // Mode édition : inputs + Save + Cancel
-          <div>
-            <h1>Welcome back</h1>
-            <input
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-              className="border border-gray-300 p-1"
-            />
-            <input
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-              className="border border-gray-300 p-1"
-            />
-            <button onClick={handleSave}>Save</button>
-            <button onClick={() => setIsEditing(false)}>Cancel</button>
+          // Mode édition : Inputs + Save + Cancel
+          <div className="text-center py-8">
+            <h1 className="text-gray-700  font-bold text-3xl pt-6 mb-6">
+              Welcome back
+            </h1>
+            <div className="flex gap-4 justify-center mb-4">
+              <input
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                className="border border-gray-300 p-2 text-gray-600 bg-white w-50 h-10 "
+              />
+              <input
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                className="border border-gray-300 p-2 text-gray-600 bg-white w-50 h-10"
+              />
+            </div>
+            <div className="flex gap-4 justify-center">
+              <button
+                className="border border-(--color-violet) text-(--color-violet) font-bold px-6 py-2 w-30 h-10"
+                onClick={handleSave}
+              >
+                Save
+              </button>
+              <button
+                className="border border-(--color-violet) text-(--color-violet) font-bold px-6 py-2 w-30 h-10"
+                onClick={() => setIsEditing(false)}
+              >
+                Cancel
+              </button>
+            </div>
           </div>
         ) : (
           // Mode normal : nom complet + Edit Name
@@ -78,10 +100,10 @@ function Profile() {
             <h1 className="text-white text-3xl">
               Welcome back
               <br />
-              {user.firstName} {user.lastName}!
+              {user.firstName} {user.lastName} !
             </h1>
             <button
-              className="text-white border border-[#00bc77] bg-[#00bc77] font-bold p-2.5 mt-4"
+              className="text-white border border-(--color-green) bg-(--color-green) font-bold p-2.5 mt-4"
               onClick={() => setIsEditing(true)}
             >
               Edit Name

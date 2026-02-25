@@ -20,7 +20,7 @@ function Home() {
         <FeatureItem
           icon={iconMoney}
           title="More savings means higher rates"
-          description="The more you save with us, the higher your interest rate will be!"
+          description="The more you save with us, the higher your interest rate will be !"
         />
         <FeatureItem
           icon={iconSecurity}

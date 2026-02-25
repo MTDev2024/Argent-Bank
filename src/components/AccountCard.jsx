@@ -7,7 +7,7 @@ function AccountCard({ title, amount, description }) {
         <p className="m-0">{description}</p>
       </div>
       <div>
-        <button className="block w-full md:w-auto p-2 font-bold text-white text-[1.1rem] mt-4 bg-[#00bc77] border border-[#00bc77]">
+        <button className="block w-full md:w-auto p-2 font-bold text-white text-[1.1rem] mt-4 bg-(--color-green) border border-(--color-green)">
           View transactions
         </button>
       </div>
