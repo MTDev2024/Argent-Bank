@@ -120,6 +120,7 @@ function Profile() {
             title={account.title}
             amount={account.amount}
             description={account.description}
+            isEditing={isEditing}
           />
         ))}
       </div>
