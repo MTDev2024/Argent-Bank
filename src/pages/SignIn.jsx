@@ -22,6 +22,8 @@ function SignIn() {
     try {
       // appel loginUser avec username et password
       const token = await loginUser({ email: username, password });
+      //
+      localStorage.setItem("token", token);
       // dispatch du token
       dispatch(setToken(token));
       // redirection
