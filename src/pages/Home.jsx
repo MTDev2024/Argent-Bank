@@ -4,9 +4,6 @@ import iconChat from "../assets/icon-chat.png";
 import iconMoney from "../assets/icon-money.png";
 import iconSecurity from "../assets/icon-security.png";
 
-/**
- * Page Home
- */
 function Home() {
   return (
     <>

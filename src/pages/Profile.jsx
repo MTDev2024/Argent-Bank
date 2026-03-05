@@ -43,12 +43,14 @@ function Profile() {
     getUserProfile(token).then((data) => {
       // 2. dispatcher les données reçues
       dispatch(setUser(data));
+      localStorage.setItem("firstName", data.firstName);
     });
   }, [token, dispatch]);
 
   const handleSave = async () => {
     await updateUserProfile(firstName, lastName, token);
     dispatch(setUser({ firstName, lastName }));
+    localStorage.setItem("firstName", firstName);
     setIsEditing(false);
   };
 
@@ -95,7 +97,7 @@ function Profile() {
             </div>
           </div>
         ) : (
-          // Mode normal : nom complet + Edit Name
+          // Mode normal : nom complet + edit Name
           <div className="text-center py-8">
             <h1 className="text-white text-3xl">
               Welcome back

@@ -18,6 +18,7 @@ function Header() {
   function handleLogout() {
     dispatch(logout());
     localStorage.removeItem("token");
+    localStorage.removeItem("firstName");
     dispatch(clearUser());
     navigate("/");
   }

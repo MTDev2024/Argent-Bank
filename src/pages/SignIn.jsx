@@ -5,9 +5,6 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-/**
- * Page Sign In
- */
 function SignIn() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
