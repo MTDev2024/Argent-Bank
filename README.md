@@ -37,7 +37,7 @@ Projet 13 du parcours **Développeur d'application JavaScript React** — OpenCl
 ### 1. Cloner le repository
 
 ```bash
-git clone https://github.com/VOTRE-USERNAME/argent-bank.git
+git clone https://github.com/MTDev2024/argent-bank.git
 cd argent-bank
 ```
 
