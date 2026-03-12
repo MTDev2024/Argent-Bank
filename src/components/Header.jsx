@@ -45,7 +45,7 @@ function Header() {
               className="flex items-center gap-2 font-bold text-(--color-grey) hover:underline"
             >
               <FaSignOutAlt />
-              Sign Out
+              <span className="hidden sm:inline">Sign Out</span>
             </button>
           </div>
         ) : (
